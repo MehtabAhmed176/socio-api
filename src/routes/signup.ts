@@ -21,7 +21,7 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { email, password } = req.body;
+    const { email, password, name } = req.body;
 
     const existingUser = await User.findOne({ email });
 
@@ -29,7 +29,7 @@ router.post(
       throw new BadRequestError('Email in use');
     }
 
-    const user = User.build({ email, password });
+    const user = User.build({ email, password, name });
     await user.save();
 
     // Generate JWT
@@ -42,11 +42,11 @@ router.post(
     );
 
     // Store it on session object
-    req.session = {
-      jwt: userJwt
-    };
+    // req.session = {
+    //   jwt: userJwt
+    // };
 
-    res.status(201).send(user);
+   return res.status(201).send({user, token: userJwt});
   }
 );
 

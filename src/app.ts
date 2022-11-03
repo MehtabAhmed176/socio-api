@@ -9,6 +9,7 @@ import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
+import { questionRouter } from './routes/question.router';
 
 const app = express();
 app.set('trust proxy', true);
@@ -19,12 +20,11 @@ app.use(
    // secure: process.env.NODE_ENV !== 'test'
   })
 );
-
 app.use(currentUserRouter);
 app.use(signinRouter);
-app.use(signoutRouter);
+//app.use(signoutRouter);
 app.use(signupRouter);
-
+app.use(questionRouter)
 app.all('*', async (req, res) => {
   throw new NotFoundError();
 });

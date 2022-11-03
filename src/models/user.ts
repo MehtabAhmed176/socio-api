@@ -5,6 +5,7 @@ import { Password } from '../services/password';
 // that are requried to create a new User
 interface UserAttrs {
   email: string;
+  name: string,
   password: string;
 }
 
@@ -27,6 +28,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    name: {
+      type: String,
+      required: true
+    },
+    photos: [String],
     password: {
       type: String,
       required: true

@@ -45,13 +45,13 @@ router.post(
       },
       process.env.JWT_KEY!
     );
-
+    // ATM we dont need the JWT token to be stored on session object
     // Store it on session object
-    req.session = {
-      jwt: userJwt
-    };
+    /*req.session = {
+       jwt: userJwt
+     };*/
 
-    res.status(200).send(existingUser);
+    res.status(200).send({ existingUser, token: userJwt });
   }
 );
 

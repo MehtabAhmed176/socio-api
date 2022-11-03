@@ -17,6 +17,7 @@ beforeAll(async () => {
   const mongoUri = mongo.getUri();
 
   await mongoose.connect(mongoUri, {});
+
 });
 
 beforeEach(async () => {
@@ -32,15 +33,21 @@ afterAll(async () => {
     await mongo.stop();
   }
   await mongoose.connection.close();
+  mongoose.connection.close(function () {
+    console.log('Mongoose connection disconnected');
+  });
+
 });
 
 global.signin = async () => {
+  const name = "test";
   const email = "test@test.com";
   const password = "password";
 
   const response = await request(app)
     .post("/api/users/signup")
     .send({
+      name,
       email,
       password,
     })
