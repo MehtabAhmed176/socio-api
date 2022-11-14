@@ -7,6 +7,8 @@ interface UserAttrs {
   email: string;
   name: string,
   password: string;
+  profile?: string,
+  gender: string
 }
 
 // An interface that describes the properties
@@ -20,6 +22,8 @@ interface UserModel extends mongoose.Model<UserDoc> {
 interface UserDoc extends mongoose.Document {
   email: string;
   password: string;
+  profile?: string;
+  gender: string;
 }
 
 const userSchema = new mongoose.Schema(
@@ -31,6 +35,12 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true
+    },
+    profile: String,
+    gender: {
+      type: String,
+      required:true,
+      enum: ['male', 'female', 'other']
     },
     photos: [String],
     password: {
@@ -50,7 +60,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.pre('save', async function(done) {
+userSchema.pre('save', async function (done) {
   if (this.isModified('password')) {
     const hashed = await Password.toHash(this.get('password'));
     this.set('password', hashed);
@@ -64,4 +74,4 @@ userSchema.statics.build = (attrs: UserAttrs) => {
 
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 
-export { User };
+export { User, UserAttrs };

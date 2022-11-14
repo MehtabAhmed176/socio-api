@@ -7,10 +7,11 @@ const schema = new mongoose.Schema({
 })
 
 // An interface that describes the properties
-// that are requried to create a new User
+// that are requried to create a new Question
 interface QuestionAttrs {
   body: string;
   owner: string,
+  color?: string,
   comment: string[];
 }
 
@@ -25,6 +26,7 @@ interface QuestionModel extends mongoose.Model<QuestionDoc> {
 interface QuestionDoc extends mongoose.Document {
   body: string;
   owner: string,
+  color?: string, 
   comment?: string[];
 }
 
@@ -59,4 +61,4 @@ questionSchema.statics.build = (attrs: QuestionAttrs) => {
 
 const Question = mongoose.model<QuestionDoc, QuestionModel>('Question', questionSchema);
 
-export { Question };
+export { Question,QuestionDoc, QuestionAttrs };
