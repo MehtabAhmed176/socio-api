@@ -4,7 +4,7 @@ import { Question, QuestionAttrs, QuestionDoc } from '../models/question.model';
 import { currentUser } from '../middlewares/current-user';
 import { requireAuth } from '../middlewares/require-auth';
 import getGenderColor, { maleColors, femaleColors, otherColors } from '../helpers/gender.colors';
-import { User, UserAttrs } from '../models/user'
+import { User, UserAttrs } from '../models/user.model'
 
 const router = express.Router();
 
@@ -17,8 +17,8 @@ router.post(
     if (!body || !location) {
       throw new BadRequestError('cannot have empty question body or location');
     }
-
-    let question = new Question({ ...req.body, owner: currentUser?.id })
+    const expiredAt= new Date().getTime() + 24 * 60 * 60 * 1000
+    let question = new Question({ ...req.body, owner: currentUser?.id, expiredAt })
     await question.save();
     return res.status(201).send(question);
   }
@@ -34,11 +34,12 @@ router.get(
       throw new BadRequestError('location is a required feild');
     }
     type QuestionType = QuestionAttrs & { owner: UserAttrs }
+    const expiredIn= new Date().getTime()
     // @TODO - write a function that could be used to build a query
     try {
       let questions: QuestionType[] = await Question.find({
-
         owner: currentUser?.id,
+        expiredAt: { $gt: expiredIn }, 
         location:
         {
           $near:

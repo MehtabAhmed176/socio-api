@@ -8,7 +8,7 @@ interface UserAttrs {
   name: string,
   password: string;
   profile?: string,
-  gender: string
+  gender: string,
 }
 
 // An interface that describes the properties
@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true
-    }
+    },
   },
   {
     toJSON: {

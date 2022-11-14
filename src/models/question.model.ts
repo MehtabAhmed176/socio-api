@@ -12,6 +12,7 @@ interface QuestionAttrs {
   body: string;
   owner: string,
   color?: string,
+  expiredAt: string,
   comment: string[];
 }
 
@@ -26,7 +27,8 @@ interface QuestionModel extends mongoose.Model<QuestionDoc> {
 interface QuestionDoc extends mongoose.Document {
   body: string;
   owner: string,
-  color?: string, 
+  color?: string,
+  expiredAt: string,
   comment?: string[];
 }
 
@@ -38,6 +40,10 @@ const questionSchema = new mongoose.Schema(
     },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
     comment: [String],
+    expiredAt: {
+      type: Date,
+      required: true
+    },
     location: {
       type: {
         type: String,
@@ -61,4 +67,4 @@ questionSchema.statics.build = (attrs: QuestionAttrs) => {
 
 const Question = mongoose.model<QuestionDoc, QuestionModel>('Question', questionSchema);
 
-export { Question,QuestionDoc, QuestionAttrs };
+export { Question, QuestionDoc, QuestionAttrs };

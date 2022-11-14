@@ -3,7 +3,7 @@ import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
 
 import { validateRequest } from '../middlewares/validate-request';
-import { User } from '../models/user';
+import { User } from '../models/user.model';
 import { BadRequestError } from '../errors/bad-request-error';
 
 const router = express.Router();
@@ -30,23 +30,28 @@ router.post(
     }
 
     const user = User.build({ email, password, name, gender });
-    await user.save();
+    try {
+      await user.save();
 
-    // Generate JWT
-    const userJwt = jwt.sign(
-      {
-        id: user.id,
-        email: user.email
-      },
-      process.env.JWT_KEY!
-    );
+      // Generate JWT
+      const userJwt = jwt.sign(
+        {
+          id: user.id,
+          email: user.email
+        },
+        process.env.JWT_KEY!
+      );
 
-    // Store it on session object
-    // req.session = {
-    //   jwt: userJwt
-    // };
+      // Store it on session object
+      // req.session = {
+      //   jwt: userJwt
+      // };
 
-   return res.status(201).send({user, token: userJwt});
+      return res.status(201).send({ user, token: userJwt });
+    }
+    catch (err) {
+      throw new BadRequestError(`something wenr wrong during signup ${err}`);
+    }
   }
 );
 
