@@ -21,7 +21,7 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { email, password, name, gender } = req.body;
+    const { email, password, name, gender, avatar_url } = req.body;
 
     const existingUser = await User.findOne({ email });
 
@@ -29,7 +29,7 @@ router.post(
       throw new BadRequestError('Email in use');
     }
 
-    const user = User.build({ email, password, name, gender });
+    const user = User.build({ email, password, name, gender, avatar_url });
     try {
       await user.save();
 

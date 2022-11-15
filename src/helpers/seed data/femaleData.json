@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Aminda Martin",
+        "email": "aminda@gmail.com",
+        "gender": "female",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/female/21.jpg"
+    },
+    {
+        "name": "Chrsity Honey",
+        "email": "christy@gmail.com",
+        "gender": "female",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/female/19.jpg"
+    },
+    {
+        "name": "Stacy Cruz",
+        "email": "stacy@gmail.com",
+        "gender": "female",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/female/11.jpg"
+    },
+    {
+        "name": "Vero Burg",
+        "email": "vero@outlook.com",
+        "gender": "female",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/female/10.jpg"
+    },
+    {
+        "name": "Mellisa Birl",
+        "email": "mellisa@gmail.com",
+        "gender": "female",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/female/09.jpg"
+    }
+]

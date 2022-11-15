@@ -1,0 +1,37 @@
+[
+    {
+        "name": "kabeer khan",
+        "email": "kabeer78@gmail.com",
+        "gender": "male",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/male/21.jpg"
+    },
+    {
+        "name": "Mubashir",
+        "email": "mubi@gmail.com",
+        "gender": "male",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/male/19.jpg"
+    },
+    {
+        "name": "Jerry",
+        "email": "jerry@gmail.com",
+        "gender": "male",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/male/11.jpg"
+    },
+    {
+        "name": "Sabi khan",
+        "email": "sabi@outlook.com",
+        "gender": "male",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/male/10.jpg"
+    },
+    {
+        "name": "Terrence Birl",
+        "email": "teri@gmail.com",
+        "gender": "male",
+        "password": "Helloworld",
+        "avatar_url": "https://xsgames.co/randomusers/assets/avatars/male/09.jpg"
+    }
+]
