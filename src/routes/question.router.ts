@@ -38,7 +38,6 @@ router.get(
     // @TODO - write a function that could be used to build a query
     try {
       let questions: QuestionType[] = await Question.find({
-        owner: currentUser?.id,
         expiredAt: { $gt: expiredIn }, 
         location:
         {
