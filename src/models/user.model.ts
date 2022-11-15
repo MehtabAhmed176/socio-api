@@ -7,7 +7,7 @@ interface UserAttrs {
   email: string;
   name: string,
   password: string;
-  profile?: string,
+  avatar_url?: string,
   gender: string,
 }
 
@@ -22,7 +22,7 @@ interface UserModel extends mongoose.Model<UserDoc> {
 interface UserDoc extends mongoose.Document {
   email: string;
   password: string;
-  profile?: string;
+  avatar_url?: string;
   gender: string;
 }
 
@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    profile: String,
+    avatar_url: String,
     gender: {
       type: String,
       required:true,
